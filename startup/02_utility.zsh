@@ -165,7 +165,12 @@ elif (( ${+commands[curl]} )); then
 fi
 
 alias du="${aliases[du]:-du} -kh"
-alias df="${aliases[df]:-df} -kh"
+
+if (( ${+commands[duf]} )); then
+  alias df="duf --hide-mp '*.zfs/snapshot/*,*/keybase/*' --hide special"
+else
+  alias df="${aliases[df]:-df} -kh"
+fi
 
 if (( $+commands[htop] )); then
   alias top=htop
