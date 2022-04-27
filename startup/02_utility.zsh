@@ -164,7 +164,11 @@ elif (( ${+commands[curl]} )); then
   alias get='curl --continue-at - --location --progress-bar --remote-name --remote-time'
 fi
 
-alias du="${aliases[du]:-du} -kh"
+if (( ${+commands[dust]} )); then
+  alias du='dust'
+else
+  alias du="${aliases[du]:-du} -kh"
+fi
 
 if (( ${+commands[duf]} )); then
   alias df="duf --hide-mp '*.zfs/snapshot/*,*/keybase/*' --hide special"
