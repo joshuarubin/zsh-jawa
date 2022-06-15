@@ -7,7 +7,6 @@ path=(
   ${HOME}/go/bin
   ${HOME}/.cabal/bin
   ${HOME}/.cargo/bin
-  ${HOME}/.ghcup/bin
   ${HOME}/.luarocks/bin
   ${HOME}/.yarn/bin
   /snap/bin
