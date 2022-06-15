@@ -1,0 +1,38 @@
+#compdef sft
+
+# You're probably going to want to rename this file '_sft', and move it into whatever
+# your $ZSH/completions directory is. For me, it's ~/.oh-my-zsh/completions. 
+
+_sft() { 
+  local state
+  local subcmds
+
+  _arguments -C \
+    '(-v --version)'{-v,--version}'[print the version]:' \
+    '(-h --help)'{-h,--help}'[show help]' \
+    "1: :->cmnds" \
+    "*::arg:->args"
+
+  case $state in
+    cmnds)
+      subcmds=("${(@f)$(eval sft | grep -vE '^$|:$'| sed -E 's/[ ]{2,}/ /g; s/^ *| *$//g; s/[ ]/:/;' | grep -vE '^1|^--|^sft|^help')}")
+      subcmds+=("help:Shows a list of commands or help for one command")
+      _describe 'command' subcmds
+    ;;
+  esac
+
+  case "$words[1]" in
+    ssh)
+      _sft_ssh
+      ;;
+  esac
+}
+
+function _sft_ssh {
+  local -a sft_ls
+    sft_ls=("${(@f)$(eval sft list-servers --columns hostname| sed -E 's/^ *| *$//g;')}")
+    sft_ls[1]=()
+    _alternative '1:sft_hosts:($sft_ls)'
+}
+
+_sft "$@"
