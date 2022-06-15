@@ -13,6 +13,8 @@
 autoload -Uz bashcompinit && bashcompinit
 
 if [[ ${zsh_loaded_plugins[-1]} != */kalc && -z ${fpath[(r)${0:h}/functions]} ]] {
+    path=( "${0:h}/bin" $path )
+
     fpath=( "${0:h}/functions" $fpath )
     autoload -Uz "${0:h}/functions"/*(.:t)
 
@@ -21,8 +23,6 @@ if [[ ${zsh_loaded_plugins[-1]} != */kalc && -z ${fpath[(r)${0:h}/functions]} ]]
         source "${file}"
     done
     unset file
-
-    path=( "${0:h}/bin" $path )
 }
 
 # vim:ft=zsh:tw=80:sw=4:sts=4:et:foldmarker=[[[,]]]
