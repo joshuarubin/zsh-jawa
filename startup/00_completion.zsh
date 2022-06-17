@@ -8,10 +8,6 @@ setopt path_dirs
 # Make globbing (filename generation) not sensitive to case.
 setopt no_case_glob
 
-# Automatically use menu completion after the second consecutive request for
-# completion
-setopt menu_complete
-
 # Don't beep on an ambiguous completion.
 setopt no_list_beep
 

@@ -10,8 +10,6 @@
 
 # Then ${0:h} to get plugin's directory
 
-autoload -Uz bashcompinit && bashcompinit
-
 if [[ ${zsh_loaded_plugins[-1]} != */kalc && -z ${fpath[(r)${0:h}/functions]} ]] {
     path=( "${0:h}/bin" $path )
 

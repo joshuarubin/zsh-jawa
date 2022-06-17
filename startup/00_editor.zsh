@@ -1,6 +1,3 @@
-# Enable viins mode by default
-bindkey -v
-
 # Allow command line editing in an external editor.
 autoload -Uz edit-command-line
 zle -N edit-command-line
