@@ -7,6 +7,8 @@ if [ -d "$HOMEBREW_PREFIX" ]; then
   export MANPATH="${HOMEBREW_PREFIX}/share/man${MANPATH+:$MANPATH}:";
   export INFOPATH="${HOMEBREW_PREFIX}/share/info:${INFOPATH:-}";
 
+  fpath=("${HOMEBREW_PREFIX}/share/zsh/site-functions" $fpath)
+
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_BAT=1
 fi
