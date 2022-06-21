@@ -65,6 +65,8 @@ if (( ${terminfo[colors]} >= 8 )); then
       local args=(--git -g --group-directories-first --icons)
       if [ "$1" = "-ltr" -o "$1" = "-lrt" ]; then
         args=($args -lsnew ${@:2})
+      elif [ "$1" = "-ltra" -o "$1" = "-lrta" ]; then
+        args=($args -lsnew -a ${@:2})
       else
         args=($args $@)
       fi
