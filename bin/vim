@@ -4,7 +4,8 @@ set -eu
 set -o pipefail
 
 if hash nvim 2>/dev/null; then
-	exec nvim "$@"
+	# shellcheck disable=SC2046
+	exec nvim $(nvim_args) "$@"
 else
 	exec vim "$@"
 fi
