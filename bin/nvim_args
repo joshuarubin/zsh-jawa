@@ -7,9 +7,5 @@ if [ -n "${WEZTERM_PANE}" ]; then
 		socket="${TMPDIR}/nvim-wezterm-pane-${WEZTERM_PANE}"
 	fi
 
-	if [ -e "${socket}" ]; then
-		rm "${socket}"
-	fi
-
 	echo "--listen ${socket}"
 fi
