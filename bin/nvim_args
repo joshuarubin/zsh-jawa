@@ -1,9 +1,15 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 if [ -n "${WEZTERM_PANE}" ]; then
-  if [ -n "${XDG_RUNTIME_DIR}" ]; then
-    echo "--listen ${XDG_RUNTIME_DIR}/nvim-wezterm-pane-${WEZTERM_PANE}"
-  elif [ -n "${TMPDIR}" ]; then
-    echo "--listen ${TMPDIR}/nvim-wezterm-pane-${WEZTERM_PANE}"
-  fi
+	if [ -n "${XDG_RUNTIME_DIR}" ]; then
+		socket="${XDG_RUNTIME_DIR}/nvim-wezterm-pane-${WEZTERM_PANE}"
+	elif [ -n "${TMPDIR}" ]; then
+		socket="${TMPDIR}/nvim-wezterm-pane-${WEZTERM_PANE}"
+	fi
+
+	if [ -e "${socket}" ]; then
+		rm "${socket}"
+	fi
+
+	echo "--listen ${socket}"
 fi
