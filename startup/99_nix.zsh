@@ -11,4 +11,6 @@ if [ -d "/nix" -a -d "${HOME}/.nix-defexpr" -a -L "${HOME}/.nix-profile" ]; then
   if [ -f "${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
     . "${HOME}/.nix-profile/etc/profile.d/hm-session-vars.sh"
   fi
+
+  export PATH="$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$PATH"
 fi
