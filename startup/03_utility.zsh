@@ -144,7 +144,7 @@ alias tmux='tmux -f ~/.tmux/not-tmate.conf'
 
 if [[ "$OSTYPE" == darwin* ]]; then
   alias o='open'
-  alias listeners='lsof -nPiTCP | grep LISTEN'
+  alias listeners='lsof -nPiTCP -sTCP:LISTEN'
   alias tmux='tmux -f ~/.tmux/osx.conf'
 elif [[ -n "$WAYLAND_DISPLAY" || -n "$DISPLAY" ]]; then
   alias o='xdg-open'
